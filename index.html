@@ -70,8 +70,32 @@
     </div>
 
   </div>
-<script>
-// JavaScript goes here.
-</script>
+  <script>
+    var canvas;
+
+    function changeCss(id, property) {
+      $(id).bind('input', function(e) {
+        canvas.css(property, e.target.value);
+      });
+    }
+
+    function changeCssPixels(id, property) {
+      $(id).bind('input', function(e) {
+        canvas.css(property, e.target.value + "px");
+      });
+    }
+
+    $(document).ready(function() {
+      canvas = $('#canvas');
+
+      changeCss('input[type=radio][name=fontname]', 'font-family');
+      changeCss('#textcolor', 'color');
+      changeCss('#bgcolor', 'background');
+
+      changeCssPixels('#textsize', 'font-size');
+      changeCssPixels('#lineheight', 'line-height');
+      changeCssPixels('#textpadding', 'padding');
+    });
+  </script>
 </body>
 </html>
